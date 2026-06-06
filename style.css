@@ -6,7 +6,7 @@
   --border-color: #333333;
   --text-main: #e8eaed;
   --text-muted: #9aa0a6;
-  --accent-color: #8ab4f8; /* Google Blue */
+  --accent-color: #8ab4f8;
   --run-btn: #8ab4f8;
   --run-btn-hover: #aecbfa;
   --error-color: #f28b82;
@@ -15,7 +15,6 @@
   --font-mono: "Fira Code", "Consolas", monospace;
 }
 
-/* ==================== GLOBAL RESET ==================== */
 * {
   margin: 0;
   padding: 0;
@@ -51,7 +50,7 @@ body {
 }
 
 .logo-icon {
-  color: #fbbc04; /* Colab Yellow/Orange */
+  color: #fbbc04;
   font-size: 1.4rem;
 }
 
@@ -71,7 +70,6 @@ body {
   color: var(--text-muted);
 }
 
-/* ==================== RUN BUTTON ==================== */
 .run-btn {
   background-color: transparent;
   color: var(--run-btn);
@@ -87,10 +85,6 @@ body {
   transition: background-color 0.2s, color 0.2s;
 }
 
-.run-btn i {
-  font-size: 0.8rem;
-}
-
 .run-btn:hover {
   background-color: rgba(138, 180, 248, 0.08);
   border-color: var(--run-btn-hover);
@@ -102,7 +96,6 @@ body {
   cursor: not-allowed;
 }
 
-/* ==================== WORKSPACE (Main Area) ==================== */
 .workspace {
   flex: 1;
   display: flex;
@@ -112,7 +105,6 @@ body {
   overflow-y: auto;
 }
 
-/* ==================== CELLS (Notebook Style) ==================== */
 .cell {
   background-color: var(--bg-cell);
   border: 1px solid var(--border-color);
@@ -147,9 +139,11 @@ body {
   font-size: 0.75rem;
   color: var(--text-muted);
   font-family: var(--font-mono);
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }
 
-/* ==================== EDITOR CONTAINER ==================== */
 .editor-container {
   flex: 1;
   min-height: 250px;
@@ -172,7 +166,6 @@ body {
   border-right: 1px solid var(--border-color) !important;
 }
 
-/* ==================== OUTPUT CONTAINER ==================== */
 .output-container {
   padding: 16px;
   min-height: 150px;
@@ -197,77 +190,76 @@ body {
   gap: 8px;
 }
 
-/* ==================== AI RESULT STYLING ==================== */
 .result-section {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.badge {
+.badge-ok, .badge-error, .badge-warn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 10px;
-  border-radius: 4px;
+  padding: 4px 12px;
+  border-radius: 20px;
   font-weight: 600;
-  font-size: 0.8rem;
-  font-family: var(--font-ui);
+  font-size: 0.75rem;
   width: fit-content;
-}
-
-.badge-error {
-  background-color: rgba(242, 139, 130, 0.15);
-  color: var(--error-color);
-  border: 1px solid rgba(242, 139, 130, 0.3);
+  margin-bottom: 12px;
 }
 
 .badge-ok {
   background-color: rgba(129, 201, 149, 0.15);
-  color: var(--success-color);
+  color: #81c995;
   border: 1px solid rgba(129, 201, 149, 0.3);
+}
+
+.badge-error {
+  background-color: rgba(242, 139, 130, 0.15);
+  color: #f28b82;
+  border: 1px solid rgba(242, 139, 130, 0.3);
+}
+
+.badge-warn {
+  background-color: rgba(251, 188, 4, 0.15);
+  color: #fbbc04;
+  border: 1px solid rgba(251, 188, 4, 0.3);
 }
 
 .step-list {
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  margin: 0;
+  padding: 0;
 }
 
-.step-item {
-  display: flex;
-  gap: 12px;
-  background-color: var(--bg-cell);
+.step-list li {
+  background: var(--bg-cell);
   border: 1px solid var(--border-color);
   border-left: 3px solid var(--accent-color);
+  border-radius: 6px;
+  margin-bottom: 12px;
+  padding: 14px;
+  transition: all 0.1s;
+}
+
+.fixed-code-block {
+  background: #0a0a0a;
+  border-radius: 6px;
   padding: 12px;
-  border-radius: 4px;
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  overflow-x: auto;
+  border: 1px solid #333;
 }
 
-.step-icon {
-  color: var(--accent-color);
-  margin-top: 2px;
+.err-banner {
+  background: rgba(242, 139, 130, 0.15);
+  border-left: 4px solid #f28b82;
+  padding: 16px;
+  border-radius: 8px;
 }
 
-.step-content {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.step-title {
-  font-family: var(--font-ui);
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--text-main);
-}
-
-.step-body {
-  color: var(--text-muted);
-}
-
-/* ==================== RESPONSIVE ==================== */
 @media (max-width: 600px) {
   .topbar {
     padding: 8px;
@@ -276,7 +268,7 @@ body {
     font-size: 0.85rem;
   }
   .run-btn span {
-    display: none; /* Hide text on small screens, show icon only */
+    display: none;
   }
   .workspace {
     padding: 8px;
