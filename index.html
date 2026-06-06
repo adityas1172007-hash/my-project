@@ -3,21 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>AI Workspace - Colab Style</title>
+  <title>AI Workspace - Gemini Code Analyzer</title>
   
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- CodeMirror CSS & Theme (Monokai - similar to Colab Dark Mode) -->
+  <!-- CodeMirror CSS & Theme (Monokai) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/monokai.min.css">
   
-  <!-- EXTERNAL CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- TOP NAVIGATION BAR (Colab Style) -->
+  <!-- TOP NAVIGATION BAR -->
   <header class="topbar">
     <div class="nav-left">
       <div class="logo-icon"><i class="fas fa-file-code"></i></div>
@@ -27,7 +26,6 @@
       </div>
     </div>
     <div class="nav-right">
-      <!-- Run Button -->
       <button id="analyze-btn" class="run-btn">
         <i class="fas fa-play"></i> <span>Run Code</span>
       </button>
@@ -44,7 +42,6 @@
         <div class="cell-meta" id="char-count">0 chars</div>
       </div>
       <div class="editor-container">
-        <!-- CodeMirror will inject here -->
         <textarea id="code-editor">
 def calculate_average(numbers):
     total = 0
@@ -66,30 +63,20 @@ print(calculate_average(scores))</textarea>
       </div>
       
       <div id="output-content" class="output-container">
-        <!-- Initial Placeholder -->
         <div class="placeholder-text" id="placeholder">
           <i class="fas fa-info-circle"></i> Click <strong>Run Code</strong> to execute and analyze.
         </div>
-
-        <!-- Loader -->
         <div class="loader" id="loader" style="display: none;">
-          <i class="fas fa-circle-notch fa-spin"></i> Executing via Gemini AI...
+          <i class="fas fa-circle-notch fa-spin"></i> Analyzing with Gemini AI...
         </div>
-
-        <!-- Result Content -->
-        <div class="result-section" id="result-section"></div>
+        <div class="result-section" id="result-section" style="display: none;"></div>
       </div>
     </section>
     
   </main>
 
-  <!-- CodeMirror JS & Python Mode -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"></script>
-  
-  <!-- EXTERNAL JS -->
   <script src="script.js"></script>
-
 </body>
 </html>
-
