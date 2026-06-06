@@ -1,0 +1,285 @@
+/* ==================== CSS VARIABLES (Colab Dark Theme) ==================== */
+:root {
+  --bg-main: #121212;
+  --bg-cell: #1e1e1e;
+  --bg-hover: #2a2a2a;
+  --border-color: #333333;
+  --text-main: #e8eaed;
+  --text-muted: #9aa0a6;
+  --accent-color: #8ab4f8; /* Google Blue */
+  --run-btn: #8ab4f8;
+  --run-btn-hover: #aecbfa;
+  --error-color: #f28b82;
+  --success-color: #81c995;
+  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "Fira Code", "Consolas", monospace;
+}
+
+/* ==================== GLOBAL RESET ==================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-ui);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ==================== TOP NAVIGATION BAR ==================== */
+.topbar {
+  background-color: var(--bg-cell);
+  border-bottom: 1px solid var(--border-color);
+  padding: 8px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  flex-shrink: 0;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  color: #fbbc04; /* Colab Yellow/Orange */
+  font-size: 1.4rem;
+}
+
+.file-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.file-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.file-status {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* ==================== RUN BUTTON ==================== */
+.run-btn {
+  background-color: transparent;
+  color: var(--run-btn);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.run-btn i {
+  font-size: 0.8rem;
+}
+
+.run-btn:hover {
+  background-color: rgba(138, 180, 248, 0.08);
+  border-color: var(--run-btn-hover);
+  color: var(--run-btn-hover);
+}
+
+.run-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ==================== WORKSPACE (Main Area) ==================== */
+.workspace {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 16px;
+  overflow-y: auto;
+}
+
+/* ==================== CELLS (Notebook Style) ==================== */
+.cell {
+  background-color: var(--bg-cell);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.cell-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.cell-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cell-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+/* ==================== EDITOR CONTAINER ==================== */
+.editor-container {
+  flex: 1;
+  min-height: 250px;
+  position: relative;
+}
+
+.CodeMirror {
+  height: 100% !important;
+  font-family: var(--font-mono) !important;
+  font-size: 14px !important;
+  background-color: var(--bg-main) !important;
+}
+
+.cm-s-monokai.CodeMirror {
+  background-color: var(--bg-main) !important;
+}
+
+.cm-s-monokai .CodeMirror-gutters {
+  background-color: var(--bg-cell) !important;
+  border-right: 1px solid var(--border-color) !important;
+}
+
+/* ==================== OUTPUT CONTAINER ==================== */
+.output-container {
+  padding: 16px;
+  min-height: 150px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+
+.placeholder-text {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.loader {
+  color: var(--accent-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ==================== AI RESULT STYLING ==================== */
+.result-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  font-family: var(--font-ui);
+  width: fit-content;
+}
+
+.badge-error {
+  background-color: rgba(242, 139, 130, 0.15);
+  color: var(--error-color);
+  border: 1px solid rgba(242, 139, 130, 0.3);
+}
+
+.badge-ok {
+  background-color: rgba(129, 201, 149, 0.15);
+  color: var(--success-color);
+  border: 1px solid rgba(129, 201, 149, 0.3);
+}
+
+.step-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.step-item {
+  display: flex;
+  gap: 12px;
+  background-color: var(--bg-cell);
+  border: 1px solid var(--border-color);
+  border-left: 3px solid var(--accent-color);
+  padding: 12px;
+  border-radius: 4px;
+}
+
+.step-icon {
+  color: var(--accent-color);
+  margin-top: 2px;
+}
+
+.step-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.step-title {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+.step-body {
+  color: var(--text-muted);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 600px) {
+  .topbar {
+    padding: 8px;
+  }
+  .file-name {
+    font-size: 0.85rem;
+  }
+  .run-btn span {
+    display: none; /* Hide text on small screens, show icon only */
+  }
+  .workspace {
+    padding: 8px;
+    gap: 8px;
+  }
+}
